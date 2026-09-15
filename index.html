@@ -197,7 +197,7 @@ section::after{content:"";position:absolute;inset:10px;border:1px solid #e5c4776
   <div class="event-icon">🌿</div><div class="eyebrow">First Celebration</div>
   <div class="event-name script threeD">Mehndi</div>
   <div class="click-card" onclick="reveal(this)">
-   <div class="cover"><div class="big script">Click Here</div><small>ONE CLICK • REVEAL INVITATION</small></div>
+   <div class="cover"><div class="big script">Click Here</div><small>CLICK TO REVEAL INVITATION</small></div>
    <div class="message"><h2 class="script">Mehndi</h2><p>Join us for an evening of henna, colors, laughter and music as we begin the wedding celebrations of Faizan &amp; Areeba.</p><strong class="event-meta">27 November 2026 • Friday • 08:00 PM</strong><span>Feroza</span></div>
   </div>
  </div>
@@ -209,7 +209,7 @@ section::after{content:"";position:absolute;inset:10px;border:1px solid #e5c4776
   <div class="event-icon">👑</div><div class="eyebrow">The Grand Celebration</div>
   <div class="event-name script threeD">Baraat</div>
   <div class="click-card" onclick="reveal(this)">
-   <div class="cover"><div class="big script">Click Here</div><small>ONE CLICK • REVEAL INVITATION</small></div>
+   <div class="cover"><div class="big script">Click Here</div><small>CLICK TO REVEAL INVITATION</small></div>
    <div class="message"><h2 class="script">Baraat</h2><p>We warmly invite you to join the Baraat celebration and bless Faizan &amp; Areeba as they begin their forever together.</p><strong class="event-meta">28 November 2026 • Saturday • 11:00 AM</strong><span>Feroza</span></div>
   </div>
  </div>
@@ -221,7 +221,7 @@ section::after{content:"";position:absolute;inset:10px;border:1px solid #e5c4776
   <div class="event-icon">✦</div><div class="eyebrow">An Evening of Elegance</div>
   <div class="event-name script threeD">Waleema</div>
   <div class="click-card" onclick="reveal(this)">
-   <div class="cover"><div class="big script">Click Here</div><small>ONE CLICK • REVEAL INVITATION</small></div>
+   <div class="cover"><div class="big script">Click Here</div><small>CLICK TO REVEAL INVITATION</small></div>
    <div class="message"><h2 class="script">Waleema</h2><p>Your presence will make our celebration complete. Please join us for the Waleema reception and share this precious moment with our family.</p><strong class="event-meta">29 November 2026 • Sunday • 12:00 PM</strong><span>Feroza</span></div>
   </div>
  </div>
@@ -242,7 +242,7 @@ section::after{content:"";position:absolute;inset:10px;border:1px solid #e5c4776
   <div class="family-title script threeD">With Love &amp; Prayers</div>
   <div class="person"><span class="threeD">Muhammad Azam</span> &amp; Mrs Azam</div>
   <div class="person"><span class="threeD">Zeshan Azam</span> &amp; Mrs Zeshan</div>
-  <div class="home script threeD">Our Home's Beauty</div>
+  <div class="home script threeD">Special Thanks</div>
   <div class="child threeD">Muhammad Ayyan Ali</div>
   <div class="child threeD">Abdul Hadi</div>
  </div>
@@ -287,10 +287,15 @@ function playEventAudio(id){
 function reveal(card){
   if(card.classList.contains("open")) return;
   card.classList.add("open");
-  /* Mehndi: one user click triggers message + fireworks + sound together. */
+
+  /* Each event starts its own music only after the user clicks its box. */
   if(card.closest("#mehndi")){
     playEventAudio("mehndiAudio");
     launchFireworks();
+  }else if(card.closest("#baraat")){
+    playEventAudio("baraatAudio");
+  }else if(card.closest("#waleema")){
+    playEventAudio("waleemaAudio");
   }
 }
 
@@ -383,6 +388,21 @@ function animateFireworks(){
     fwCanvas.classList.remove("show");
   }
 }
+
+
+let activeEvent=null;
+const eventTransitionObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      if(activeEvent && activeEvent!==entry.target.id) stopEventAudio();
+      activeEvent=entry.target.id;
+    }
+  });
+},{threshold:.45});
+["mehndi","baraat","waleema"].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el) eventTransitionObserver.observe(el);
+});
 
 </script>
 <!-- Put these three audio files beside index.html: mehndi-fireworks.mp3, baraat-band.mp3, waleema-music.mp3 -->
