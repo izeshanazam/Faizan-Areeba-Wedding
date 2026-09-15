@@ -145,9 +145,27 @@ section::after{content:"";position:absolute;inset:10px;border:1px solid #e5c4776
 }
 #family .wrap::after{top:auto;bottom:10%;animation-delay:3.5s}
 @keyframes stars{0%,100%{transform:translateY(0);opacity:.25}50%{transform:translateY(-10px);opacity:.65}}
+
+#fireworksCanvas{
+ position:fixed;inset:0;width:100%;height:100%;z-index:9999;
+ pointer-events:none;opacity:0;transition:opacity .25s ease;
+}
+#fireworksCanvas.show{opacity:1}
 </style>
 </head>
 <body>
+<canvas id="fireworksCanvas" aria-hidden="true"></canvas>
+
+<audio id="mehndiAudio" preload="auto" loop>
+  <source src="mehndi-fireworks.mp3" type="audio/mpeg">
+</audio>
+<audio id="baraatAudio" preload="auto" loop>
+  <source src="baraat-band.mp3" type="audio/mpeg">
+</audio>
+<audio id="waleemaAudio" preload="auto" loop>
+  <source src="waleema-music.mp3" type="audio/mpeg">
+</audio>
+
 
 <section id="opening">
  <div class="curtain left"></div><div class="curtain right"></div>
@@ -251,7 +269,30 @@ opening.addEventListener('click',()=>{
 });
 
 /* Reveal cards: one click permanently opens the message for that event. */
-function reveal(card){card.classList.add('open')}
+function stopEventAudio(){
+  ["mehndiAudio","baraatAudio","waleemaAudio"].forEach(id=>{
+    const a=document.getElementById(id);
+    if(a){a.pause();a.currentTime=0;}
+  });
+}
+function playEventAudio(id){
+  stopEventAudio();
+  const a=document.getElementById(id);
+  if(a){
+    a.volume=.65;
+    const p=a.play();
+    if(p && p.catch)p.catch(()=>{});
+  }
+}
+function reveal(card){
+  if(card.classList.contains("open")) return;
+  card.classList.add("open");
+  /* Mehndi: one user click triggers message + fireworks + sound together. */
+  if(card.closest("#mehndi")){
+    playEventAudio("mehndiAudio");
+    launchFireworks();
+  }
+}
 
 /* Family names enter sequentially when their section becomes visible. */
 const family=document.getElementById('family');
@@ -261,6 +302,89 @@ new IntersectionObserver(es=>{
   if(e.isIntersecting) people.forEach((p,i)=>setTimeout(()=>p.classList.add('show'),i*650));
  });
 },{threshold:.25}).observe(family);
+
+const eventSections=document.querySelectorAll("#mehndi,#baraat,#waleema");
+const eventAudioObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    if(entry.target.id==="baraat") playEventAudio("baraatAudio");
+    if(entry.target.id==="waleema") playEventAudio("waleemaAudio");
+  });
+},{threshold:.55});
+eventSections.forEach(s=>eventAudioObserver.observe(s));
+
+/* Stop event music when leaving the invitation/event area. */
+const audioStopObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting && (entry.target.id==="message" || entry.target.id==="family" || entry.target.id==="contacts")){
+      stopEventAudio();
+    }
+  });
+},{threshold:.35});
+["message","family","contacts"].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el) audioStopObserver.observe(el);
+});
+
+
+/* Lightweight canvas fireworks: no external library required. */
+const fwCanvas=document.getElementById("fireworksCanvas");
+const fwCtx=fwCanvas.getContext("2d");
+let fwRaf=null,fwParticles=[],fwEnd=0;
+
+function resizeFireworks(){
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  fwCanvas.width=Math.floor(innerWidth*dpr);
+  fwCanvas.height=Math.floor(innerHeight*dpr);
+  fwCtx.setTransform(dpr,0,0,dpr,0,0);
+}
+resizeFireworks();
+addEventListener("resize",resizeFireworks);
+
+function burst(x,y,hue){
+  for(let i=0;i<55;i++){
+    const a=Math.random()*Math.PI*2;
+    const s=2+Math.random()*5;
+    fwParticles.push({
+      x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,
+      life:55+Math.random()*35,max:90,
+      hue:hue+Math.random()*35,alpha:1,size:1+Math.random()*2
+    });
+  }
+}
+function launchFireworks(){
+  fwParticles=[];
+  fwCanvas.classList.add("show");
+  const w=innerWidth,h=innerHeight;
+  const points=[
+    [w*.22,h*.28,25],[w*.50,h*.20,42],[w*.78,h*.30,5],
+    [w*.36,h*.43,45],[w*.67,h*.44,18]
+  ];
+  points.forEach((p,i)=>setTimeout(()=>burst(p[0],p[1],p[2]),i*230));
+  fwEnd=performance.now()+4200;
+  cancelAnimationFrame(fwRaf);
+  animateFireworks();
+}
+function animateFireworks(){
+  fwCtx.clearRect(0,0,innerWidth,innerHeight);
+  fwParticles.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;p.vy+=.055;p.vx*=.985;p.vy*=.985;
+    p.life--;p.alpha=Math.max(0,p.life/p.max);
+    fwCtx.beginPath();
+    fwCtx.arc(p.x,p.y,p.size,0,Math.PI*2);
+    fwCtx.fillStyle=`hsla(${p.hue},90%,72%,${p.alpha})`;
+    fwCtx.fill();
+  });
+  fwParticles=fwParticles.filter(p=>p.life>0);
+  if(performance.now()<fwEnd || fwParticles.length){
+    fwRaf=requestAnimationFrame(animateFireworks);
+  }else{
+    fwCtx.clearRect(0,0,innerWidth,innerHeight);
+    fwCanvas.classList.remove("show");
+  }
+}
+
 </script>
+<!-- Put these three audio files beside index.html: mehndi-fireworks.mp3, baraat-band.mp3, waleema-music.mp3 -->
 </body>
 </html>
