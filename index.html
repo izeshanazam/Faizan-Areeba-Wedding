@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Faizan & Areeba | Wedding Invitation</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap');
+*{box-sizing:border-box}body{margin:0;background:#eee;color:#4a2525;font-family:'Cormorant Garamond',serif}
+.screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.card{width:min(430px,100%);min-height:720px;background:linear-gradient(145deg,#fffdf8,#f8eee5);border-radius:24px;box-shadow:0 18px 60px #0002;position:relative;overflow:hidden;padding:42px 26px}
+.card:before,.card:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;border:1px solid #b58a5a55}.card:before{top:-100px;left:-100px}.card:after{bottom:-100px;right:-100px}
+.hidden{display:none}.orn{font-size:30px;letter-spacing:8px;color:#a47748}.script{font-family:'Great Vibes',cursive}.welcome{text-align:center}.welcome h1{font-size:58px;font-weight:400;margin:40px 0 10px}.welcome p{font-size:22px}.btn{border:0;border-radius:999px;padding:15px 30px;background:#7e3030;color:white;font:600 17px 'Cormorant Garamond';cursor:pointer;box-shadow:0 8px 22px #7e303044}.content{text-align:center}.content h1{font-size:48px;margin:10px 0}.amp{font-size:34px;color:#ad8352;margin:4px}.intro{font-size:20px;line-height:1.5}.event{margin:24px 0;padding:17px;border-top:1px solid #b58a5a66;border-bottom:1px solid #b58a5a66}.event h2{margin:0 0 4px;font-size:28px;font-weight:500}.date{font-size:23px}.place{font-size:20px;margin-top:22px}.phone{display:inline-block;margin:8px;color:#7e3030;text-decoration:none;font-size:18px}.fade{animation:fade .9s ease}@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="welcome" class="screen">
+ <div class="card welcome">
+  <div class="orn">✦ ❦ ✦</div>
+  <h1 class="script">You're Invited</h1>
+  <p>to celebrate the wedding of</p>
+  <h2 class="script" style="font-size:48px;font-weight:400">Faizan & Areeba</h2>
+  <p style="margin:30px 0 28px">With love, joy & blessings</p>
+  <button class="btn" onclick="openInvitation()">Open Invitation</button>
+ </div>
+</div>
+
+<div id="invitation" class="screen hidden">
+ <div class="card content fade">
+  <div class="orn">✦ ❦ ✦</div>
+  <p class="intro">Together with their families,<br>you are warmly invited to celebrate</p>
+  <h1 class="script">Faizan Azam</h1>
+  <div class="amp">&</div>
+  <h1 class="script">Areeba Razzaq</h1>
+
+  <div class="event"><h2>Mehndi</h2><div class="date">26 November 2026</div></div>
+  <div class="event"><h2>Baraat</h2><div class="date">27 November 2026</div></div>
+  <div class="event"><h2>Waleema</h2><div class="date">28 November 2026</div></div>
+
+  <div class="place"><strong>Venue</strong><br>Feroza</div>
+  <div style="margin-top:22px"><strong>For Information</strong><br>
+   <a class="phone" href="tel:03083718448">03083718448</a>
+   <a class="phone" href="tel:03438749786">03438749786</a>
+  </div>
+  <div class="orn" style="margin-top:25px">❦</div>
+ </div>
+</div>
+<script>
+function openInvitation(){
+ document.getElementById('welcome').classList.add('hidden');
+ document.getElementById('invitation').classList.remove('hidden');
+ window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
