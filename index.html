@@ -4,309 +4,276 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Faizan & Areeba — Wedding Invitation</title>
+<meta name="theme-color" content="#16070b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@500;600;700&display=swap');
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:#12070a;color:#fff;font-family:"Cormorant Garamond",Georgia,serif;overflow-x:hidden}
-section{min-height:100svh;position:relative;display:flex;align-items:center;justify-content:center;padding:34px 20px;overflow:hidden}
-section:before{content:"";position:absolute;inset:14px;border:1px solid #d8b66b55;border-radius:25px;pointer-events:none}
-.gold{color:#e9ca86}
+body{margin:0;background:#100509;color:#fff;font-family:"Cormorant Garamond",Georgia,serif;overflow-x:hidden}
+section{min-height:100svh;position:relative;display:flex;align-items:center;justify-content:center;padding:42px 20px;overflow:hidden}
+section:after{content:"";position:absolute;inset:13px;border:1px solid rgba(235,201,125,.45);border-radius:28px;pointer-events:none;z-index:1}
+.content{position:relative;z-index:3;width:min(620px,100%);text-align:center}
 .script{font-family:"Great Vibes",cursive}
 .serif{font-family:"Playfair Display",Georgia,serif}
-.orn{color:#dfb85e;font-size:25px;letter-spacing:8px;text-align:center}
-.eyebrow{text-transform:uppercase;letter-spacing:5px;font-size:11px;color:#e7c778;text-align:center}
+.gold{color:#efd08a}
+.threeD{
+  text-shadow:
+  1px 1px 0 #fff1bb,
+  2px 2px 0 #c59b50,
+  4px 4px 0 #80551f,
+  6px 6px 0 #4d2d16,
+  0 15px 28px rgba(0,0,0,.55);
+}
+.eyebrow{text-transform:uppercase;letter-spacing:5px;font-size:11px;color:#efd28b}
+.orn{color:#e4bb67;letter-spacing:10px;font-size:24px}
 .fade{opacity:0;transform:translateY(35px);transition:1s ease}
 .reveal{opacity:1;transform:none}
+.scroll{position:absolute;bottom:22px;left:0;right:0;text-align:center;font-size:12px;letter-spacing:3px;color:#e3c994;z-index:4}
+.scroll span{display:block;margin-top:7px;animation:bounce 1.5s infinite}
+@keyframes bounce{50%{transform:translateY(7px)}}
 
-/* 1 Welcome */
-#welcome{background:
-radial-gradient(circle at 50% 45%,#8b1625 0,#4b0710 34%,#170307 76%),
-repeating-linear-gradient(90deg,#500610 0 18px,#770b17 19px 36px)}
-#welcome .content{text-align:center;z-index:2}
-.welcome-title{font-size:75px;line-height:.9;margin:22px 0 10px;text-shadow:3px 5px 0 #5a1d14,0 15px 30px #000}
-.family{font-family:"Playfair Display",serif;font-size:28px;letter-spacing:2px;margin:10px 0;color:#f7e4b5}
-.family2{font-size:22px;color:#ead7cb}
-.click{margin-top:45px;display:inline-block;border:1px solid #e8c675;background:#e8c675;color:#40100d;padding:13px 28px;border-radius:50px;letter-spacing:2px;font-weight:700;box-shadow:0 0 35px #e8c67533;animation:pulse 1.8s infinite}
-@keyframes pulse{50%{transform:scale(1.05);box-shadow:0 0 45px #e8c67555}}
-.scrollhint{font-size:12px;color:#cdb5aa;margin-top:13px}
-
-/* 2 invitation */
-#invitation{background:radial-gradient(circle at 50% 25%,#54212c,#1b0a10 70%)}
-.card{width:min(560px,100%);text-align:center;padding:35px 22px}
-.card h1{font-size:43px;line-height:1.12;margin:18px 0;color:#f4d895}
-.card .names{font-size:67px;line-height:.8;color:#f0c979;text-shadow:2px 3px 0 #70451f,4px 6px 0 #3a2014,0 12px 24px #000}
-.invite-text{font-size:18px;line-height:1.8;color:#eadbd3;max-width:440px;margin:30px auto}
-.down{position:absolute;bottom:20px;left:0;right:0;text-align:center;color:#c9a96b;font-size:12px}
-
-/* Scratch sections */
-.scratch-section{background:#f5eadb;color:#38231d}
-.scratch-section:before{border-color:#b9975b66}
-.scratch-wrap{width:min(530px,100%);text-align:center;position:relative}
-.motif{font-size:38px;color:#9a7137;margin-bottom:5px}
-.event-label{font-size:12px;letter-spacing:5px;text-transform:uppercase;color:#92703f}
-.event-name{font-family:"Great Vibes",cursive;font-size:78px;color:#7d1720;line-height:1;margin:5px 0}
-.cones{font-size:48px;letter-spacing:14px;margin:10px 0}
-.scratch-note{font-size:20px;color:#6e5546;margin:16px 0 8px}
-.scratch-box{position:relative;width:min(420px,92vw);height:230px;margin:15px auto;border-radius:24px;overflow:hidden;background:#fff9f0;border:1px solid #c9a76b;box-shadow:0 18px 45px #5b2c1718}
-.invite-under{position:absolute;inset:0;padding:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#53121a}
-.invite-under h2{font-family:"Great Vibes",cursive;font-size:45px;margin:0}.invite-under p{font-size:17px;line-height:1.5;margin:5px}
-canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
-.scratch-tip{font-size:12px;color:#896d59;margin-top:7px}
-.time{font-size:20px;color:#8a1c26;margin-top:4px}
-
-/* contacts */
-#contacts{background:radial-gradient(circle at 50% 35%,#3b2028,#12080d 75%)}
-.contact-card{width:min(540px,100%);text-align:center}
-.contact-title{font-family:"Great Vibes",cursive;font-size:67px;color:#e7c477;margin:0}
-.phone{margin:16px auto;padding:18px;border:1px solid #d3ad63;border-radius:20px;background:#ffffff08;font-size:26px;letter-spacing:2px;color:#f3dfb1;opacity:0;transform:translateY(30px) scale(.96)}
-.phone.show{animation:phoneIn .8s forwards}
-@keyframes phoneIn{to{opacity:1;transform:none}}
-.phone:nth-child(2){animation-delay:.25s}
-
-/* message */
-#message{background:#efe4d4;color:#3d2921;text-align:center}
-.message-box{max-width:520px}
-.message-box .quote{font-family:"Great Vibes",cursive;font-size:66px;color:#7d1820}
-.message-box p{font-size:25px;line-height:1.65;color:#5b4437}
-
-/* family names */
-#family{background:linear-gradient(145deg,#1a090e,#42151e 45%,#13070b);text-align:center}
-.family-title{font-family:"Great Vibes",cursive;font-size:61px;color:#e6c275;margin:0 0 25px}
-.person{font-family:"Playfair Display",serif;font-size:28px;margin:14px 0;opacity:0;transform:translateY(25px)}
-.person.show{animation:nameIn .9s forwards}
-.person .small{font-size:18px;color:#d8b995}
-@keyframes nameIn{to{opacity:1;transform:none}}
-
-/* final */
-#final{background:radial-gradient(circle at 50% 45%,#6a2635,#21090f 65%,#090306);text-align:center}
-.final-title{font-family:"Great Vibes",cursive;font-size:48px;color:#e7c678;margin:8px}
-.final-name{font-family:"Playfair Display",serif;font-weight:600;font-size:39px;color:#fff1c8;margin:15px 0;opacity:0;transform:scale(.8)}
-.final-name.show{animation:finalIn 1s forwards}
-@keyframes finalIn{to{opacity:1;transform:scale(1)}}
-@keyframes childGlow{0%,100%{filter:drop-shadow(0 0 0 rgba(231,198,120,0));transform:scale(1)}50%{filter:drop-shadow(0 0 16px rgba(231,198,120,.55));transform:scale(1.045)}}
-.final-name.show{animation:finalIn 1s forwards, childGlow 2.2s ease-in-out infinite 1s}
-.final-name:last-child{font-family:"Great Vibes",cursive;font-size:54px;color:#f1ce7e}
-.end{margin-top:30px;color:#cdb4a5;font-size:13px;letter-spacing:2px}
-
-@media(max-width:390px){
-.welcome-title{font-size:60px}.family{font-size:24px}.card .names{font-size:56px}.event-name{font-size:67px}.contact-title{font-size:58px}.message-box p{font-size:21px}.final-name{font-size:32px}
+/* WELCOME */
+#welcome{
+ background:
+ radial-gradient(circle at 50% 45%,rgba(132,21,39,.85),rgba(27,4,10,.96) 65%),
+ linear-gradient(135deg,#3a0913,#100307);
 }
+.welcome-title{font-size:78px;line-height:.85;margin:16px 0 20px;color:#f4d795}
+.family{font-family:"Playfair Display",serif;font-size:28px;letter-spacing:2px;color:#f9e9bf;margin:8px}
+.family2{font-size:23px;color:#dfcfc4}
+.enter{
+ margin-top:42px;display:inline-block;padding:14px 34px;border:1px solid #e7c575;border-radius:999px;
+ color:#3e130f;background:linear-gradient(135deg,#f5dc9a,#c59645);font-weight:700;letter-spacing:3px;
+ box-shadow:0 12px 35px rgba(231,196,110,.22);animation:buttonPulse 2s infinite
+}
+@keyframes buttonPulse{50%{transform:scale(1.04);box-shadow:0 0 38px rgba(231,196,110,.4)}}
+
+/* INVITATION */
+#invitation{background:radial-gradient(circle at 50% 20%,#692d3b,#1b080e 72%)}
+.inv-card{padding:30px 20px}
+.inv-card h1{font-size:45px;line-height:1.1;color:#f3d692;margin:20px 0}
+.names{font-size:72px;line-height:.85;color:#f1cc78;margin:25px 0}
+.invite-text{font-size:20px;line-height:1.75;color:#eadbd4;max-width:500px;margin:0 auto}
+.date-line{margin-top:25px;color:#efd28c;letter-spacing:3px;font-size:14px}
+
+/* EVENTS */
+.event{
+ color:#fff;
+ background-size:cover;
+ background-position:center;
+ background-attachment:scroll;
+}
+.event:before{
+ content:"";position:absolute;inset:0;background:
+ linear-gradient(180deg,rgba(12,3,7,.28),rgba(12,3,7,.78)),
+ radial-gradient(circle at 50% 35%,rgba(0,0,0,.02),rgba(0,0,0,.68));
+ z-index:1;
+}
+#mehndi{
+ background-image:url("https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?auto=format&fit=crop&w=3840&q=90");
+}
+#baraat{
+ background-image:url("https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=3840&q=90");
+}
+#walima{
+ background-image:url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=3840&q=90");
+}
+.event-card{
+ width:min(560px,100%);padding:30px 20px;border-radius:30px;
+ background:rgba(17,5,9,.48);backdrop-filter:blur(6px);
+ border:1px solid rgba(245,213,143,.48);box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+.event-icon{font-size:46px;margin-bottom:5px}
+.event-name{font-size:83px;line-height:.9;color:#f1d18b;margin:5px 0 15px}
+.event-date{font-family:"Playfair Display",serif;font-size:20px;letter-spacing:1px;margin:10px 0;color:#fff0c5}
+.event-place{font-size:17px;color:#e6d8cc;letter-spacing:2px}
+.click-reveal{
+ position:relative;width:min(450px,92vw);min-height:245px;margin:25px auto 10px;
+ border:1px solid #e7c77f;border-radius:24px;overflow:hidden;cursor:pointer;
+ background:linear-gradient(135deg,#b98637,#f0d18b,#9b6c2b);
+ box-shadow:inset 0 0 35px rgba(255,255,255,.16),0 18px 45px rgba(0,0,0,.35);
+}
+.reveal-cover{
+ position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+ color:#3c170f;transition:.65s ease;z-index:2;
+}
+.reveal-cover .big{font-family:"Great Vibes",cursive;font-size:52px}
+.reveal-cover .small{font-size:13px;letter-spacing:4px;margin-top:8px}
+.reveal-message{
+ position:absolute;inset:0;padding:24px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+ background:linear-gradient(145deg,rgba(255,248,225,.98),rgba(250,231,190,.98));color:#5b171e;
+ opacity:0;transform:scale(.92);transition:.65s ease;z-index:1;
+}
+.reveal-message h2{font-family:"Great Vibes",cursive;font-size:50px;margin:0 0 8px;color:#7b1520}
+.reveal-message p{font-size:18px;line-height:1.45;margin:5px 0;max-width:380px}
+.reveal-message .strong{font-family:"Playfair Display",serif;font-size:19px;color:#7d1b24}
+.click-reveal.open .reveal-cover{opacity:0;transform:scale(1.08);pointer-events:none}
+.click-reveal.open .reveal-message{opacity:1;transform:scale(1)}
+.hint{font-size:12px;letter-spacing:2px;color:#f3dfb1;margin-top:8px}
+
+/* LAST MESSAGE */
+#message{background:radial-gradient(circle at 50% 35%,#f3e3ca,#c9ad82 130%);color:#3e2921}
+#message:after{border-color:rgba(111,74,37,.35)}
+.message-box .quote{font-family:"Great Vibes",cursive;font-size:72px;color:#7b1720}
+.message-box p{font-size:27px;line-height:1.55;color:#533c31}
+
+/* FAMILY */
+#family{background:linear-gradient(145deg,#120509,#48141f 48%,#16060b)}
+.family-title{font-family:"Great Vibes",cursive;font-size:67px;color:#e9ca82;margin:0 0 28px}
+.person{font-family:"Playfair Display",serif;font-size:29px;margin:17px 0;color:#f5e3bc;opacity:0;transform:translateY(25px)}
+.person.show{animation:nameIn .9s forwards}
+.person .small{font-size:18px;color:#d8bea0}
+@keyframes nameIn{to{opacity:1;transform:none}}
+.home-beauty{font-family:"Great Vibes",cursive;font-size:53px;color:#f0cf86;margin:35px 0 10px}
+.child{
+ font-family:"Playfair Display",serif;font-size:34px;color:#fff0c5;margin:14px 0;
+ animation:childFloat 2.4s ease-in-out infinite,childGlow 2.4s ease-in-out infinite;
+}
+.child:nth-of-type(2){animation-delay:.65s}
+@keyframes childFloat{50%{transform:translateY(-7px) scale(1.035)}}
+@keyframes childGlow{50%{filter:drop-shadow(0 0 17px rgba(240,207,134,.7))}}
+
+/* CONTACTS LAST */
+#contacts{background:radial-gradient(circle at 50% 30%,#42202b,#100509 78%)}
+.contact-title{font-family:"Great Vibes",cursive;font-size:75px;color:#ebc97f;margin:0 0 20px}
+.phone{
+ margin:15px auto;padding:17px;border:1px solid #d7b46c;border-radius:20px;background:rgba(255,255,255,.05);
+font-size:27px;letter-spacing:2px;color:#f5e4bb;animation:phoneFloat 2.2s ease-in-out infinite;
+}
+.phone:nth-child(3){animation-delay:.5s}
+@keyframes phoneFloat{50%{transform:translateY(-5px);box-shadow:0 0 25px rgba(229,194,112,.16)}}
+.end{font-size:15px;color:#cdbba9;margin-top:28px;letter-spacing:2px}
 </style>
 </head>
 <body>
 
-<!-- WELCOME -->
 <section id="welcome">
-<div class="content fade">
-<div class="orn">✦ ❦ ✦</div>
-<div class="eyebrow">A Warm Welcome</div>
-<div class="welcome-title script gold">Welcome</div>
-<div class="family">Azam &amp; Sons</div>
-<div class="family2">Zeshan &amp; His Family</div>
-<div class="click" onclick="document.getElementById('invitation').scrollIntoView({behavior:'smooth'})">ENTER INVITATION</div>
-<div class="scrollhint">Tap above or scroll down ↓</div>
-</div>
+ <div class="content">
+  <div class="orn">✦ ✦ ✦</div>
+  <div class="eyebrow">A Beautiful Beginning</div>
+  <h1 class="welcome-title script threeD">Welcome</h1>
+  <div class="family threeD">Azam &amp; Sons</div>
+  <div class="family2">Zeshan &amp; His Family</div>
+  <div class="enter">CLICK TO ENTER</div>
+  <div class="scroll">SCROLL TO BEGIN<span>⌄</span></div>
+ </div>
 </section>
 
-<!-- INVITATION -->
 <section id="invitation">
-<div class="card fade">
-<div class="orn">✦ ❦ ✦</div>
-<div class="eyebrow">Together with their families</div>
-<h1 class="serif">Marriage Invitation</h1>
-<div class="names script">Faizan<br><span style="font-size:34px;color:#d9ae67">&amp;</span><br>Areeba</div>
-<p class="invite-text">With immense joy and the blessings of our families, we invite you to join us as we celebrate the beginning of a beautiful new chapter in our lives.</p>
-<div class="orn">❧ ✦ ❧</div>
-</div>
-<div class="down">Scroll down for the celebrations ↓</div>
+ <div class="content inv-card fade">
+  <div class="orn">❦</div>
+  <div class="eyebrow">With Joy &amp; Blessings</div>
+  <h1 class="serif threeD">Wedding Invitation</h1>
+  <div class="names script threeD">Faizan &amp; Areeba</div>
+  <p class="invite-text">Together with their families, we joyfully invite you to celebrate the beautiful beginning of their new journey.</p>
+  <div class="date-line">FEROZA • NOVEMBER 2026</div>
+  <div class="scroll">SCROLL FOR EVENTS<span>⌄</span></div>
+ </div>
 </section>
 
-<!-- MEHNDI -->
-<section id="mehndi" class="scratch-section">
-<div class="scratch-wrap fade">
-<div class="motif">❀ ✿ ❀</div>
-<div class="event-label">Our First Celebration</div>
-<div class="event-name">Mehndi</div>
-<div class="cones">🪷 🪷 🪷</div>
-<div class="scratch-note">✨ Scratch here to reveal your invitation ✨</div>
-<div class="scratch-box">
-<div class="invite-under">
-<h2>Mehndi</h2>
-<p>We warmly invite you to join our Mehndi celebration.</p>
-<p><b>26 November 2026</b></p>
-<p class="time">8:00 PM</p>
-<p>📍 Feroza</p>
-</div>
-<canvas id="scratch1"></canvas>
-</div>
-<div class="scratch-tip">Use your finger to scratch the golden surface</div>
-</div>
+<section id="mehndi" class="event">
+ <div class="content event-card fade">
+  <div class="event-icon">🌿</div>
+  <div class="eyebrow">First Celebration</div>
+  <h2 class="event-name script threeD">Mehndi</h2>
+  <div class="event-date">26 November 2026 • 08:00 PM</div>
+  <div class="event-place">FEROZA</div>
+  <div class="click-reveal" onclick="revealCard(this)">
+   <div class="reveal-cover"><div class="big threeD">Click Here</div><div class="small">ONE CLICK • REVEAL INVITATION</div></div>
+   <div class="reveal-message"><h2>Mehndi</h2><p>Come celebrate an evening filled with henna, laughter, music and beautiful memories as we begin the wedding festivities.</p><div class="strong">26 November 2026 • 08:00 PM</div><div>Feroza</div></div>
+  </div>
+  <div class="hint">ONE CLICK IS ENOUGH — THE MESSAGE STAYS OPEN</div>
+ </div>
+ <div class="scroll">SCROLL TO BARAAT<span>⌄</span></div>
 </section>
 
-<!-- BARAAT -->
-<section id="baraat" class="scratch-section" style="background:#f3e8dc">
-<div class="scratch-wrap fade">
-<div class="motif">✦ ❦ ✦</div>
-<div class="event-label">The Grand Celebration</div>
-<div class="event-name">Baraat</div>
-<div class="cones">🤵🏻 ✦ 🤵🏻</div>
-<div class="scratch-note">✨ Scratch here to reveal your invitation ✨</div>
-<div class="scratch-box">
-<div class="invite-under">
-<h2>Baraat</h2>
-<p>Join us as we celebrate this joyous occasion with love and blessings.</p>
-<p><b>27 November 2026</b></p>
-<p class="time">11:00 AM</p>
-<p>📍 Feroza</p>
-</div>
-<canvas id="scratch2"></canvas>
-</div>
-<div class="scratch-tip">Scratch the card to reveal the Baraat invitation</div>
-</div>
+<section id="baraat" class="event">
+ <div class="content event-card fade">
+  <div class="event-icon">👑</div>
+  <div class="eyebrow">The Grand Celebration</div>
+  <h2 class="event-name script threeD">Baraat</h2>
+  <div class="event-date">27 November 2026 • 11:00 AM</div>
+  <div class="event-place">FEROZA</div>
+  <div class="click-reveal" onclick="revealCard(this)">
+   <div class="reveal-cover"><div class="big threeD">Click Here</div><div class="small">ONE CLICK • REVEAL INVITATION</div></div>
+   <div class="reveal-message"><h2>Baraat</h2><p>With hearts full of happiness, we invite you to join us for the Baraat and bless Faizan &amp; Areeba as they begin their forever.</p><div class="strong">27 November 2026 • 11:00 AM</div><div>Feroza</div></div>
+  </div>
+  <div class="hint">ONE CLICK IS ENOUGH — THE MESSAGE STAYS OPEN</div>
+ </div>
+ <div class="scroll">SCROLL TO WALEEMA<span>⌄</span></div>
 </section>
 
-<!-- WALEEMA -->
-<section id="waleema" class="scratch-section" style="background:#eee4d7">
-<div class="scratch-wrap fade">
-<div class="motif">✧ ❀ ✧</div>
-<div class="event-label">An Evening of Elegance</div>
-<div class="event-name">Waleema</div>
-<div class="cones">✧ 💐 ✧</div>
-<div class="scratch-note">✨ Scratch here to reveal your invitation ✨</div>
-<div class="scratch-box">
-<div class="invite-under">
-<h2>Waleema</h2>
-<p>We request the pleasure of your company at our Waleema reception.</p>
-<p><b>28 November 2026</b></p>
-<p class="time">12:00 PM</p>
-<p>📍 Feroza</p>
-</div>
-<canvas id="scratch3"></canvas>
-</div>
-<div class="scratch-tip">Scratch the card to reveal the Waleema invitation</div>
-</div>
+<section id="walima" class="event">
+ <div class="content event-card fade">
+  <div class="event-icon">🥂</div>
+  <div class="eyebrow">A Joyful Farewell Celebration</div>
+  <h2 class="event-name script threeD">Waleema</h2>
+  <div class="event-date">28 November 2026 • 12:00 PM</div>
+  <div class="event-place">FEROZA</div>
+  <div class="click-reveal" onclick="revealCard(this)">
+   <div class="reveal-cover"><div class="big threeD">Click Here</div><div class="small">ONE CLICK • REVEAL INVITATION</div></div>
+   <div class="reveal-message"><h2>Waleema</h2><p>Your presence will make our celebration complete. Please join us for the Waleema and share this precious moment with our family.</p><div class="strong">28 November 2026 • 12:00 PM</div><div>Feroza</div></div>
+  </div>
+  <div class="hint">ONE CLICK IS ENOUGH — THE MESSAGE STAYS OPEN</div>
+ </div>
+ <div class="scroll">SCROLL DOWN<span>⌄</span></div>
 </section>
 
-<!-- MESSAGE -->
 <section id="message">
-<div class="message-box fade">
-<div class="orn">❦ ✦ ❦</div>
-<div class="quote">Your Presence</div>
-<p>Your presence will be a source of immense happiness and will make our celebrations even more memorable.</p>
-<div class="quote">We Await You</div>
-</div>
+ <div class="content message-box fade">
+  <div class="orn">✦</div>
+  <div class="quote">Your presence</div>
+  <p>will be a source of great happiness and a beautiful part of our special moments.</p>
+  <div class="serif" style="font-size:16px;letter-spacing:3px">WE WOULD BE HONOURED TO HAVE YOU WITH US</div>
+ </div>
 </section>
 
-<!-- FAMILY -->
 <section id="family">
-<div class="card">
-<div class="orn">✦ ❦ ✦</div>
-<div class="eyebrow">With Love &amp; Blessings</div>
-<h2 class="family-title">Our Families</h2>
-<div id="people">
-<div class="person">Muhammad Azam <span class="small">&amp; Mrs Azam</span></div>
-<div class="person">Zeshan Azam <span class="small">&amp; Mrs Zeshan</span></div>
-</div>
-</div>
+ <div class="content">
+  <div class="family-title threeD">With Love &amp; Prayers</div>
+  <div class="person"><span class="threeD">Muhammad Azam</span> <span class="small">&amp; Mrs Azam</span></div>
+  <div class="person"><span class="threeD">Zeshan Azam</span> <span class="small">&amp; Mrs Zeshan</span></div>
+  <div class="home-beauty">Our Home's Beauty</div>
+  <div class="child threeD">Muhammad Ayyan Ali</div>
+  <div class="child threeD">Abdul Hadi</div>
+ </div>
+ <div class="scroll">SCROLL TO CONTACTS<span>⌄</span></div>
 </section>
 
-<!-- FINAL -->
-<section id="final">
-<div class="card">
-<div class="orn">✦ ❦ ✦</div>
-<div class="eyebrow">The Most Special Part of Our Home</div>
-<div class="final-title">Our Home's Beauty</div>
-<div class="final-name">Muhammad Ayyan Ali</div>
-<div class="final-name">Abdul Hadi</div>
-<div class="orn" style="margin-top:28px">❦ ✧ ❦</div>
-<div class="end">With love, Faizan &amp; Areeba</div>
-</div>
-</section>
-
-<!-- CONTACTS -->
 <section id="contacts">
-<div class="contact-card">
-<div class="orn">✦ ❦ ✦</div>
-<div class="eyebrow">For Further Details</div>
-<h2 class="contact-title">Contact Us</h2>
-<div class="phone">☎ 0308 3718448</div>
-<div class="phone">☎ 0343 8749786</div>
-<div class="end">We look forward to celebrating with you.</div>
-</div>
+ <div class="content">
+  <div class="eyebrow">For Any Information</div>
+  <h2 class="contact-title threeD">Contact Us</h2>
+  <div class="phone threeD">0308 3718448</div>
+  <div class="phone threeD">0343 8749786</div>
+  <div class="end">WE LOOK FORWARD TO CELEBRATING WITH YOU</div>
+ </div>
 </section>
-
 
 <script>
-/* Reveal animations when each section enters */
-const observer=new IntersectionObserver(entries=>{
+const io=new IntersectionObserver(entries=>{
+ entries.forEach(e=>{
+  if(e.isIntersecting)e.target.classList.add('reveal');
+ });
+},{threshold:.18});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+const people=document.querySelectorAll('.person');
+const po=new IntersectionObserver(entries=>{
  entries.forEach(e=>{
   if(e.isIntersecting){
-   e.target.querySelectorAll('.fade').forEach(x=>x.classList.add('reveal'));
-   if(e.target.id==='contacts') e.target.querySelectorAll('.phone').forEach(x=>x.classList.add('show'));
-   if(e.target.id==='family') e.target.querySelectorAll('.person').forEach((x,i)=>setTimeout(()=>x.classList.add('show'),i*650));
-   if(e.target.id==='final') e.target.querySelectorAll('.final-name').forEach((x,i)=>setTimeout(()=>x.classList.add('show'),i*1000));
+   people.forEach((p,i)=>setTimeout(()=>p.classList.add('show'),i*550));
   }
  });
-},{threshold:.28});
-document.querySelectorAll('section').forEach(s=>observer.observe(s));
+},{threshold:.25});
+const family=document.querySelector('#family');
+if(family)po.observe(family);
 
-/* Scratch-card effect — a very light scratch reveals the complete invitation */
-function makeScratch(id){
- const c=document.getElementById(id), box=c.parentElement, ctx=c.getContext('2d');
- let revealed=false, down=false, moved=false, startX=0, startY=0;
-
- function resize(){
-  const r=box.getBoundingClientRect(), d=window.devicePixelRatio||1;
-  c.width=r.width*d;c.height=r.height*d;c.style.width=r.width+'px';c.style.height=r.height+'px';
-  ctx.setTransform(d,0,0,d,0,0);
-  const g=ctx.createLinearGradient(0,0,r.width,r.height);
-  g.addColorStop(0,'#b88b3e');g.addColorStop(.45,'#e5c477');g.addColorStop(1,'#8e642b');
-  ctx.fillStyle=g;ctx.fillRect(0,0,r.width,r.height);
-  ctx.fillStyle='#fff1c7';ctx.font='600 18px Georgia';ctx.textAlign='center';
-  ctx.fillText('SCRATCH HERE',r.width/2,r.height/2);
-  ctx.font='13px Georgia';ctx.fillText('✦ Reveal Invitation ✦',r.width/2,r.height/2+27);
-  revealed=false;
- }
- function point(e){
-  const r=c.getBoundingClientRect(), t=e.touches?e.touches[0]:e;
-  return {x:t.clientX-r.left,y:t.clientY-r.top};
- }
- function reveal(){
-  if(revealed)return;
-  revealed=true;
-  ctx.clearRect(0,0,c.clientWidth,c.clientHeight);
-  c.style.pointerEvents='none';
- }
- function scratch(e){
-  if(!down || revealed)return;
-  e.preventDefault();
-  const p=point(e);
-  if(Math.hypot(p.x-startX,p.y-startY)>7) moved=true;
-  /* A tiny scratch is enough — reveal the entire message, not just a small spot. */
-  if(moved || performance.now()-scratch.started>120) reveal();
- }
- resize();
- window.addEventListener('resize',resize);
-
- c.addEventListener('pointerdown',e=>{
-   if(revealed)return;
-   down=true; moved=false;
-   const p=point(e); startX=p.x; startY=p.y;
-   scratch.started=performance.now();
-   c.setPointerCapture?.(e.pointerId);
- });
- c.addEventListener('pointermove',scratch);
- c.addEventListener('pointerup',e=>{
-   if(!revealed){
-     /* Even a very short touch counts as a light scratch. */
-     reveal();
-   }
-   down=false;
- });
- c.addEventListener('pointercancel',()=>{down=false});
+function revealCard(card){
+ card.classList.add('open');
 }
-makeScratch('scratch1');makeScratch('scratch2');makeScratch('scratch3');
 </script>
 </body>
 </html>
