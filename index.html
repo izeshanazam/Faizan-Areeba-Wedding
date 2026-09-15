@@ -274,136 +274,69 @@ function stopEventAudio(){
     const a=document.getElementById(id);
     if(a){a.pause();a.currentTime=0;}
   });
+  activeAudioEvent=null;
 }
+let activeAudioEvent=null;
+let openedEvents=new Set();
+
 function playEventAudio(id){
+  if(activeAudioEvent===id){
+    const same=document.getElementById(id);
+    if(same && same.paused){
+      const p=same.play(); if(p&&p.catch)p.catch(()=>{});
+    }
+    return;
+  }
   stopEventAudio();
   const a=document.getElementById(id);
   if(a){
     a.volume=.65;
+    activeAudioEvent=id;
     const p=a.play();
-    if(p && p.catch)p.catch(()=>{});
+    if(p&&p.catch)p.catch(()=>{});
   }
 }
+
+function eventAudioId(sectionId){
+  return sectionId==="mehndi" ? "mehndiAudio" :
+         sectionId==="baraat" ? "baraatAudio" :
+         sectionId==="waleema" ? "waleemaAudio" : null;
+}
+
 function reveal(card){
-  if(card.classList.contains("open")) return;
+  if(card.classList.contains("open")){
+    const sec=card.closest(".event");
+    if(sec) playEventAudio(eventAudioId(sec.id));
+    return;
+  }
   card.classList.add("open");
-
-  /* Each event starts its own music only after the user clicks its box. */
-  if(card.closest("#mehndi")){
-    playEventAudio("mehndiAudio");
-    launchFireworks();
-  }else if(card.closest("#baraat")){
-    playEventAudio("baraatAudio");
-  }else if(card.closest("#waleema")){
-    playEventAudio("waleemaAudio");
+  const sec=card.closest(".event");
+  if(sec){
+    openedEvents.add(sec.id);
+    playEventAudio(eventAudioId(sec.id));
+    if(sec.id==="mehndi") launchFireworks();
   }
 }
 
-/* Family names enter sequentially when their section becomes visible. */
-const family=document.getElementById('family');
-const people=family.querySelectorAll('.person');
-new IntersectionObserver(es=>{
- es.forEach(e=>{
-  if(e.isIntersecting) people.forEach((p,i)=>setTimeout(()=>p.classList.add('show'),i*650));
- });
-},{threshold:.25}).observe(family);
+/* Once an event has been opened by the user, scrolling back to it
+   resumes ONLY that event's music. A different event stops the old music. */
+const eventSections=[...document.querySelectorAll("#mehndi,#baraat,#waleema")];
+const eventObserver=new IntersectionObserver(entries=>{
+  const visible=entries.filter(e=>e.isIntersecting)
+                       .sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+  if(!visible) return;
+  const id=visible.target.id;
+  if(openedEvents.has(id)) playEventAudio(eventAudioId(id));
+  else stopEventAudio();
+},{threshold:[.45,.65,.8]});
+eventSections.forEach(s=>eventObserver.observe(s));
 
-const eventSections=document.querySelectorAll("#mehndi,#baraat,#waleema");
-const eventAudioObserver=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(!entry.isIntersecting)return;
-    if(entry.target.id==="baraat") playEventAudio("baraatAudio");
-    if(entry.target.id==="waleema") playEventAudio("waleemaAudio");
-  });
-},{threshold:.55});
-eventSections.forEach(s=>eventAudioObserver.observe(s));
-
-/* Stop event music when leaving the invitation/event area. */
-const audioStopObserver=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting && (entry.target.id==="message" || entry.target.id==="family" || entry.target.id==="contacts")){
-      stopEventAudio();
-    }
-  });
+/* Leaving all event sections stops event music. */
+const postEvents=document.querySelectorAll("#message,#family,#contacts");
+const postObserver=new IntersectionObserver(entries=>{
+  if(entries.some(e=>e.isIntersecting)) stopEventAudio();
 },{threshold:.35});
-["message","family","contacts"].forEach(id=>{
-  const el=document.getElementById(id);
-  if(el) audioStopObserver.observe(el);
-});
-
-
-/* Lightweight canvas fireworks: no external library required. */
-const fwCanvas=document.getElementById("fireworksCanvas");
-const fwCtx=fwCanvas.getContext("2d");
-let fwRaf=null,fwParticles=[],fwEnd=0;
-
-function resizeFireworks(){
-  const dpr=Math.min(window.devicePixelRatio||1,2);
-  fwCanvas.width=Math.floor(innerWidth*dpr);
-  fwCanvas.height=Math.floor(innerHeight*dpr);
-  fwCtx.setTransform(dpr,0,0,dpr,0,0);
-}
-resizeFireworks();
-addEventListener("resize",resizeFireworks);
-
-function burst(x,y,hue){
-  for(let i=0;i<55;i++){
-    const a=Math.random()*Math.PI*2;
-    const s=2+Math.random()*5;
-    fwParticles.push({
-      x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,
-      life:55+Math.random()*35,max:90,
-      hue:hue+Math.random()*35,alpha:1,size:1+Math.random()*2
-    });
-  }
-}
-function launchFireworks(){
-  fwParticles=[];
-  fwCanvas.classList.add("show");
-  const w=innerWidth,h=innerHeight;
-  const points=[
-    [w*.22,h*.28,25],[w*.50,h*.20,42],[w*.78,h*.30,5],
-    [w*.36,h*.43,45],[w*.67,h*.44,18]
-  ];
-  points.forEach((p,i)=>setTimeout(()=>burst(p[0],p[1],p[2]),i*230));
-  fwEnd=performance.now()+4200;
-  cancelAnimationFrame(fwRaf);
-  animateFireworks();
-}
-function animateFireworks(){
-  fwCtx.clearRect(0,0,innerWidth,innerHeight);
-  fwParticles.forEach(p=>{
-    p.x+=p.vx;p.y+=p.vy;p.vy+=.055;p.vx*=.985;p.vy*=.985;
-    p.life--;p.alpha=Math.max(0,p.life/p.max);
-    fwCtx.beginPath();
-    fwCtx.arc(p.x,p.y,p.size,0,Math.PI*2);
-    fwCtx.fillStyle=`hsla(${p.hue},90%,72%,${p.alpha})`;
-    fwCtx.fill();
-  });
-  fwParticles=fwParticles.filter(p=>p.life>0);
-  if(performance.now()<fwEnd || fwParticles.length){
-    fwRaf=requestAnimationFrame(animateFireworks);
-  }else{
-    fwCtx.clearRect(0,0,innerWidth,innerHeight);
-    fwCanvas.classList.remove("show");
-  }
-}
-
-
-let activeEvent=null;
-const eventTransitionObserver=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      if(activeEvent && activeEvent!==entry.target.id) stopEventAudio();
-      activeEvent=entry.target.id;
-    }
-  });
-},{threshold:.45});
-["mehndi","baraat","waleema"].forEach(id=>{
-  const el=document.getElementById(id);
-  if(el) eventTransitionObserver.observe(el);
-});
-
+postEvents.forEach(s=>postObserver.observe(s));
 </script>
 <!-- Put these three audio files beside index.html: mehndi-fireworks.mp3, baraat-band.mp3, waleema-music.mp3 -->
 </body>
