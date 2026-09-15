@@ -84,6 +84,8 @@ canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
 .final-name{font-family:"Playfair Display",serif;font-weight:600;font-size:39px;color:#fff1c8;margin:15px 0;opacity:0;transform:scale(.8)}
 .final-name.show{animation:finalIn 1s forwards}
 @keyframes finalIn{to{opacity:1;transform:scale(1)}}
+@keyframes childGlow{0%,100%{filter:drop-shadow(0 0 0 rgba(231,198,120,0));transform:scale(1)}50%{filter:drop-shadow(0 0 16px rgba(231,198,120,.55));transform:scale(1.045)}}
+.final-name.show{animation:finalIn 1s forwards, childGlow 2.2s ease-in-out infinite 1s}
 .final-name:last-child{font-family:"Great Vibes",cursive;font-size:54px;color:#f1ce7e}
 .end{margin-top:30px;color:#cdb4a5;font-size:13px;letter-spacing:2px}
 
@@ -186,18 +188,6 @@ canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
 </div>
 </section>
 
-<!-- CONTACTS -->
-<section id="contacts">
-<div class="contact-card">
-<div class="orn">✦ ❦ ✦</div>
-<div class="eyebrow">For Further Details</div>
-<h2 class="contact-title">Contact Us</h2>
-<div class="phone">☎ 0308 3718448</div>
-<div class="phone">☎ 0343 8749786</div>
-<div class="end">We look forward to celebrating with you.</div>
-</div>
-</section>
-
 <!-- MESSAGE -->
 <section id="message">
 <div class="message-box fade">
@@ -234,6 +224,19 @@ canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
 </div>
 </section>
 
+<!-- CONTACTS -->
+<section id="contacts">
+<div class="contact-card">
+<div class="orn">✦ ❦ ✦</div>
+<div class="eyebrow">For Further Details</div>
+<h2 class="contact-title">Contact Us</h2>
+<div class="phone">☎ 0308 3718448</div>
+<div class="phone">☎ 0343 8749786</div>
+<div class="end">We look forward to celebrating with you.</div>
+</div>
+</section>
+
+
 <script>
 /* Reveal animations when each section enters */
 const observer=new IntersectionObserver(entries=>{
@@ -248,9 +251,11 @@ const observer=new IntersectionObserver(entries=>{
 },{threshold:.28});
 document.querySelectorAll('section').forEach(s=>observer.observe(s));
 
-/* Scratch-card effect */
+/* Scratch-card effect — a very light scratch reveals the complete invitation */
 function makeScratch(id){
  const c=document.getElementById(id), box=c.parentElement, ctx=c.getContext('2d');
+ let revealed=false, down=false, moved=false, startX=0, startY=0;
+
  function resize(){
   const r=box.getBoundingClientRect(), d=window.devicePixelRatio||1;
   c.width=r.width*d;c.height=r.height*d;c.style.width=r.width+'px';c.style.height=r.height+'px';
@@ -261,19 +266,45 @@ function makeScratch(id){
   ctx.fillStyle='#fff1c7';ctx.font='600 18px Georgia';ctx.textAlign='center';
   ctx.fillText('SCRATCH HERE',r.width/2,r.height/2);
   ctx.font='13px Georgia';ctx.fillText('✦ Reveal Invitation ✦',r.width/2,r.height/2+27);
+  revealed=false;
  }
- resize();window.addEventListener('resize',resize);
- let down=false, last={x:0,y:0};
- function point(e){const r=c.getBoundingClientRect();const t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top}}
+ function point(e){
+  const r=c.getBoundingClientRect(), t=e.touches?e.touches[0]:e;
+  return {x:t.clientX-r.left,y:t.clientY-r.top};
+ }
+ function reveal(){
+  if(revealed)return;
+  revealed=true;
+  ctx.clearRect(0,0,c.clientWidth,c.clientHeight);
+  c.style.pointerEvents='none';
+ }
  function scratch(e){
-  if(!down)return;
-  e.preventDefault();const p=point(e);
-  ctx.globalCompositeOperation='destination-out';ctx.beginPath();ctx.arc(p.x,p.y,25,0,Math.PI*2);ctx.fill();
-  ctx.globalCompositeOperation='source-over';
+  if(!down || revealed)return;
+  e.preventDefault();
+  const p=point(e);
+  if(Math.hypot(p.x-startX,p.y-startY)>7) moved=true;
+  /* A tiny scratch is enough — reveal the entire message, not just a small spot. */
+  if(moved || performance.now()-scratch.started>120) reveal();
  }
- c.addEventListener('pointerdown',e=>{down=true;c.setPointerCapture(e.pointerId);scratch(e)});
+ resize();
+ window.addEventListener('resize',resize);
+
+ c.addEventListener('pointerdown',e=>{
+   if(revealed)return;
+   down=true; moved=false;
+   const p=point(e); startX=p.x; startY=p.y;
+   scratch.started=performance.now();
+   c.setPointerCapture?.(e.pointerId);
+ });
  c.addEventListener('pointermove',scratch);
- c.addEventListener('pointerup',()=>down=false);c.addEventListener('pointercancel',()=>down=false);
+ c.addEventListener('pointerup',e=>{
+   if(!revealed){
+     /* Even a very short touch counts as a light scratch. */
+     reveal();
+   }
+   down=false;
+ });
+ c.addEventListener('pointercancel',()=>{down=false});
 }
 makeScratch('scratch1');makeScratch('scratch2');makeScratch('scratch3');
 </script>
