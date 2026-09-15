@@ -1,118 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>Faizan & Areeba | The Wedding</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Faizan & Areeba — Wedding Invitation</title>
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#08070a;color:#fff;font-family:'Cormorant Garamond',serif;overflow-x:hidden}
-.page{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:14px;position:relative;overflow:hidden}
-.panel{width:min(450px,100%);min-height:790px;position:relative;overflow:hidden;border-radius:30px;box-shadow:0 28px 100px #000b}
-.panel:before{content:"";position:absolute;inset:13px;border:1px solid #d9b66e88;border-radius:25px;pointer-events:none;z-index:5}
-.panel:after{content:"";position:absolute;inset:24px;border:1px solid #d9b66e22;border-radius:20px;pointer-events:none;z-index:5}
-.inner{position:relative;z-index:10;width:100%;padding:45px 30px;text-align:center}
-.script{font-family:'Great Vibes',cursive;font-weight:400}.gold{color:#e5c278}.cream{color:#fff7e8}
-.caps{font-family:Montserrat,sans-serif;text-transform:uppercase;letter-spacing:3px;font-size:10px}.orn{color:#e5c278;font-size:30px;letter-spacing:7px;margin:15px 0}
-.btn{display:inline-block;padding:15px 30px;border-radius:999px;background:linear-gradient(135deg,#f0d28c,#b98238);color:#24150c;text-decoration:none;font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;box-shadow:0 12px 35px #0006}
-.glow{animation:glow 3s ease-in-out infinite}@keyframes glow{50%{text-shadow:0 0 25px #e5c27877}}
-.fade{animation:fade 1.1s ease both}@keyframes fade{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
-.flower{position:absolute;font-size:70px;opacity:.12;filter:blur(.2px)}.f1{top:-10px;left:-8px;transform:rotate(-18deg)}.f2{bottom:-12px;right:-8px;transform:rotate(22deg)}.petal{position:absolute;width:9px;height:15px;border-radius:80% 10% 80% 10%;background:#e5c27833;animation:float 9s linear infinite}@keyframes float{from{transform:translateY(100vh) rotate(0)}to{transform:translateY(-120px) rotate(360deg)}}
-.cover{background:radial-gradient(circle at 50% 25%,#734455,#2b111c 52%,#09070a)}.cover .ring{width:270px;height:270px;border:1px solid #e5c27866;border-radius:50%;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 25px #e5c27809,0 0 0 55px #e5c27805}
-.cover h1{font-size:78px;line-height:.78;margin:25px 0}.cover h2{font-size:25px;font-weight:400;margin:15px 0 38px}
-.count{display:flex;justify-content:center;gap:8px;margin:25px 0}.count div{min-width:58px;padding:10px 6px;border:1px solid #e5c27844;border-radius:12px;background:#0002}.count b{display:block;font:600 19px Montserrat}.count span{font:9px Montserrat;letter-spacing:1px;opacity:.7}
-.envelope{background:linear-gradient(145deg,#f7ead7,#dbc2a2);color:#3a1e20}.seal{width:100px;height:100px;border-radius:50%;background:#7d2938;color:#e5c278;border:3px double #e5c278;display:flex;align-items:center;justify-content:center;margin:25px auto;font-size:38px;box-shadow:0 12px 30px #0003}.envelope h1{font-size:62px;margin:5px}.envelope p{font-size:21px;line-height:1.45}.goldline{height:1px;background:#a57b3d;width:90px;margin:22px auto}
-.event{color:#fff;background:#111}.mehndi{background:radial-gradient(circle at 20% 20%,#2b725c,#061c16 60%,#020908)}.baraat{background:radial-gradient(circle at 80% 15%,#703141,#180b10 60%,#050305)}.waleema{background:radial-gradient(circle at 50% 10%,#87652a,#2b1b08 60%,#090601)}
-.event .inner{padding-top:75px}.event-icon{font-size:62px}.event h1{font-size:76px;line-height:.8;margin:15px 0}.date{font:600 11px Montserrat;letter-spacing:3px;margin:20px 0}.desc{font-size:22px;line-height:1.4;max-width:330px;margin:25px auto}.venue{font:11px Montserrat;letter-spacing:1.5px;line-height:2;color:#fff9df}.venue strong{font-size:16px}.timeline{display:flex;justify-content:center;gap:7px;margin:30px 0}.timeline a{width:8px;height:8px;border-radius:50%;border:1px solid #e5c278}.timeline a.active{background:#e5c278}
-.final{background:radial-gradient(circle at 50% 25%,#654052,#170b11 65%,#050407)}.final h1{font-size:74px;line-height:.8;margin:25px 0}.final .phone{display:block;color:#e5c278;text-decoration:none;font:12px Montserrat;margin:9px}.map{display:inline-block;margin-top:20px;color:#e5c278;text-decoration:none;font:11px Montserrat;letter-spacing:1px}
-.music{position:fixed;right:18px;bottom:18px;z-index:100;width:48px;height:48px;border-radius:50%;border:1px solid #e5c278;background:#2b111ccc;color:#e5c278;font-size:20px}
-@media(max-height:720px){.panel{min-height:720px}.inner{padding-top:35px;padding-bottom:35px}}
+*{box-sizing:border-box} body{margin:0;background:#120d14;color:#fff7ef;font-family:Georgia,"Times New Roman",serif}
+.page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:
+radial-gradient(circle at 20% 15%,rgba(220,166,83,.16),transparent 30%),
+radial-gradient(circle at 80% 80%,rgba(179,68,117,.18),transparent 32%),#120d14}
+.card{width:min(520px,100%);min-height:90vh;border:1px solid rgba(220,166,83,.45);border-radius:28px;padding:28px 20px;position:relative;overflow:hidden;background:linear-gradient(145deg,#21131d,#100b11);box-shadow:0 20px 70px #0008}
+.orn{position:absolute;inset:12px;border:1px solid #d7a85e55;border-radius:22px;pointer-events:none}
+.kicker{text-align:center;letter-spacing:4px;text-transform:uppercase;color:#e6c37d;font-size:12px}
+h1{text-align:center;font-size:46px;margin:14px 0 6px;line-height:1.02}
+.names{display:flex;justify-content:center;gap:12px;align-items:center;flex-wrap:wrap;margin:18px 0 8px}
+.name3d{font-family:Georgia,serif;font-size:38px;font-weight:700;color:#f6d58b;text-shadow:1px 1px 0 #9c6b2e,2px 2px 0 #7a4e21,3px 3px 0 #4c2b16,0 10px 18px #0009;letter-spacing:1px}
+.amp{font-size:28px;color:#e6a9b8}
+.subtitle{text-align:center;color:#e8d9cf;line-height:1.7;margin:0 auto 22px;max-width:390px}
+.event{margin:14px 4px;padding:18px;border-radius:20px;border:1px solid #d7a85e44;background:linear-gradient(135deg,#ffffff08,#d7a85e09);cursor:pointer;transition:.25s}
+.event.active{border-color:#e8bf70;box-shadow:0 0 0 1px #e8bf7033,0 12px 35px #0008;transform:translateY(-2px);background:linear-gradient(135deg,#d7a85e18,#b5447515)}
+.event h2{margin:0 0 7px;text-align:center;color:#f2cf8d;font-size:25px}.date{text-align:center;color:#fff;font-size:17px}.detail{text-align:center;color:#cdbdb5;font-size:13px;margin-top:5px}
+.actions{display:flex;gap:10px;justify-content:center;margin:18px 0;flex-wrap:wrap}
+button{border:1px solid #d7a85e88;background:#d7a85e;color:#1a1010;padding:11px 17px;border-radius:999px;font-weight:700;cursor:pointer}
+button.alt{background:#ffffff0a;color:#f6e8dc}
+#musicStatus{text-align:center;color:#cdbdb5;font-size:12px;margin:5px 0 14px}
+.footer{text-align:center;color:#a9968e;font-size:12px;line-height:1.7;margin-top:18px}
+.hidden{display:none}.welcome{min-height:75vh;display:flex;flex-direction:column;justify-content:center}
+.tap{text-align:center;color:#e8c77e;font-size:13px;margin-top:24px;animation:pulse 1.7s infinite}
+@keyframes pulse{50%{opacity:.45}}
+#main{display:none}
 </style>
 </head>
 <body>
+<div class="page">
+<div class="card">
+<div class="orn"></div>
 
-<!-- Floating petals -->
-<span class="petal" style="left:8%;animation-delay:0s"></span><span class="petal" style="left:28%;animation-delay:2s"></span><span class="petal" style="left:52%;animation-delay:4s"></span><span class="petal" style="left:76%;animation-delay:1s"></span><span class="petal" style="left:92%;animation-delay:5s"></span>
+<section id="welcome" class="welcome">
+<div class="kicker">With Love & Blessings</div>
+<div class="names"><span class="name3d">Faizan</span><span class="amp">&amp;</span><span class="name3d">Areeba</span></div>
+<h1>Wedding Invitation</h1>
+<p class="subtitle">Together with their families, Faizan &amp; Areeba invite you to celebrate three beautiful days of love, joy and togetherness.</p>
+<div class="tap">Tap “Open Invitation” to begin</div>
+<div class="actions"><button onclick="openInvite()">Open Invitation ✨</button></div>
+</section>
 
-<section class="page" id="home"><div class="panel cover">
-<div class="ring"></div><div class="flower f1">❀</div><div class="flower f2">❀</div>
-<div class="inner fade">
-<div class="caps">A Celebration of Love</div><div class="orn">✦ ❦ ✦</div>
-<div class="script cream" style="font-size:29px">The Wedding of</div>
-<h1 class="script gold glow">Faizan<br>&amp; Areeba</h1>
-<h2>26 — 28 November 2026</h2>
-<div class="caps">Feroza</div>
-<div class="count"><div><b id="d">--</b><span>DAYS</span></div><div><b id="h">--</b><span>HOURS</span></div><div><b id="m">--</b><span>MIN</span></div><div><b id="s">--</b><span>SEC</span></div></div>
-<a class="btn" href="#envelope">Enter Invitation</a>
-</div></div></section>
+<section id="main">
+<div class="kicker">You Are Cordially Invited</div>
+<div class="names"><span class="name3d">Faizan</span><span class="amp">&amp;</span><span class="name3d">Areeba</span></div>
+<p class="subtitle">Please join us in celebrating our wedding festivities.</p>
 
-<section class="page" id="envelope"><div class="panel envelope">
-<div class="flower f1">❀</div><div class="flower f2">❀</div>
-<div class="inner fade">
-<div class="caps">With the blessings of our families</div>
-<div class="orn">❦</div>
-<div class="seal">♥</div>
-<div class="script" style="font-size:32px">Dear Family &amp; Friends</div>
-<h1 class="script" style="font-size:66px;color:#7d2938">You are Invited</h1>
-<div class="goldline"></div>
-<p>Come celebrate the beautiful beginning of a new journey with<br><strong>Faizan Azam &amp; Areeba Razzaq</strong></p>
-<a class="btn" href="#mehndi">View Wedding Events</a>
-</div></div></section>
+<div class="event active" id="mehndi" onclick="selectEvent('mehndi')">
+<h2>🌿 Mehndi</h2><div class="date">26 November 2026</div><div class="detail">Feroza</div>
+</div>
+<div class="event" id="baraat" onclick="selectEvent('baraat')">
+<h2>🤵 Baraat</h2><div class="date">27 November 2026</div><div class="detail">Feroza</div>
+</div>
+<div class="event" id="waleema" onclick="selectEvent('waleema')">
+<h2>✨ Waleema</h2><div class="date">28 November 2026</div><div class="detail">Feroza</div>
+</div>
 
-<section class="page event mehndi" id="mehndi"><div class="panel mehndi">
-<div class="flower f1">❀</div><div class="flower f2">❀</div>
-<div class="inner fade">
-<div class="caps gold">26 November 2026</div><div class="event-icon">🌿</div>
-<h1 class="script gold">Mehndi</h1><div class="date">THE FIRST CELEBRATION</div><div class="goldline"></div>
-<p class="desc">An evening filled with colors, music, laughter and the sweetest memories.</p>
-<div class="venue">VENUE<br><strong>Feroza</strong></div>
-<div style="margin-top:35px"><a class="btn" href="#baraat">Continue →</a></div>
-</div><div class="timeline"><a href="#home"></a><a href="#envelope"></a><a class="active" href="#mehndi"></a><a href="#baraat"></a><a href="#waleema"></a><a href="#final"></a></div>
-</div></section>
+<div id="musicStatus">Mehndi music selected • Tap play to listen</div>
+<div class="actions">
+<button onclick="toggleMusic()" id="musicBtn">▶ Play Music</button>
+<button class="alt" onclick="shareInvite()">Share Invitation</button>
+</div>
 
-<section class="page event baraat" id="baraat"><div class="panel baraat">
-<div class="flower f1">❀</div><div class="flower f2">❀</div>
-<div class="inner fade">
-<div class="caps gold">27 November 2026</div><div class="event-icon">🤵</div>
-<h1 class="script gold">Baraat</h1><div class="date">THE MAIN CELEBRATION</div><div class="goldline"></div>
-<p class="desc">With hearts full of happiness, join us as two families come together in love.</p>
-<div class="venue">VENUE<br><strong>Feroza</strong></div>
-<div style="margin-top:35px"><a class="btn" href="#waleema">Continue →</a></div>
-</div><div class="timeline"><a href="#home"></a><a href="#envelope"></a><a href="#mehndi"></a><a class="active" href="#baraat"></a><a href="#waleema"></a><a href="#final"></a></div>
-</div></section>
+<div class="footer">
+📍 Feroza<br>
+📞 03083718448 &nbsp;|&nbsp; 03438749786<br><br>
+With warm wishes, we look forward to celebrating with you.
+</div>
+</section>
+</div>
+</div>
 
-<section class="page event waleema" id="waleema"><div class="panel waleema">
-<div class="flower f1">❀</div><div class="flower f2">❀</div>
-<div class="inner fade">
-<div class="caps cream">28 November 2026</div><div class="event-icon">✨</div>
-<h1 class="script cream">Waleema</h1><div class="date">THE FINAL CELEBRATION</div><div class="goldline"></div>
-<p class="desc">A graceful evening of togetherness, delicious moments and cherished memories.</p>
-<div class="venue">VENUE<br><strong>Feroza</strong></div>
-<div style="margin-top:35px"><a class="btn" href="#final">Final Details →</a></div>
-</div><div class="timeline"><a href="#home"></a><a href="#envelope"></a><a href="#mehndi"></a><a href="#baraat"></a><a class="active" href="#waleema"></a><a href="#final"></a></div>
-</div></section>
-
-<section class="page" id="final"><div class="panel final">
-<div class="flower f1">❀</div><div class="flower f2">❀</div>
-<div class="inner fade">
-<div class="orn">✦ ❦ ✦</div><div class="caps">Your Presence is Our Blessing</div>
-<h1 class="script gold">Faizan<br>&amp; Areeba</h1>
-<p style="font-size:22px;line-height:1.45">We would be honored to have you with us on these special days.</p>
-<div class="goldline"></div>
-<div class="caps">For Information</div>
-<a class="phone" href="tel:03083718448">03083718448</a>
-<a class="phone" href="tel:03438749786">03438749786</a>
-<div class="venue" style="margin-top:18px">LOCATION<br><strong>Feroza</strong></div>
-<a class="map" href="https://www.google.com/maps/search/?api=1&query=Feroza" target="_blank">⌖ OPEN LOCATION</a>
-<div class="orn">❦</div>
-<a class="btn" href="#home">Replay Invitation</a>
-</div></div></section>
-
-<button class="music" onclick="toggleMusic()" aria-label="Music">♪</button>
+<audio id="audio" preload="auto" loop></audio>
 <script>
-const target=new Date("2026-11-26T00:00:00");
-function tick(){let x=Math.max(0,target-new Date()),d=Math.floor(x/864e5),h=Math.floor(x/36e5)%24,m=Math.floor(x/6e4)%60,s=Math.floor(x/1e3)%60;for(const [id,v] of [["d",d],["h",h],["m",m],["s",s]])document.getElementById(id).textContent=String(v).padStart(2,"0")}tick();setInterval(tick,1000);
-function toggleMusic(){alert("Music button ready — apni pasand ka wedding music add karne ke liye audio file upload karni hogi.");}
+const tracks={
+ mehndi:{file:'music/mehndi.wav', label:'Mehndi music selected'},
+ baraat:{file:'music/baraat.wav', label:'Baraat music selected'},
+ waleema:{file:'music/waleema.wav', label:'Waleema music selected'}
+};
+let current='mehndi', playing=false;
+const audio=document.getElementById('audio'), status=document.getElementById('musicStatus'), btn=document.getElementById('musicBtn');
+
+function openInvite(){
+ document.getElementById('welcome').style.display='none';
+ document.getElementById('main').style.display='block';
+ selectEvent('mehndi');
+}
+function selectEvent(name){
+ current=name;
+ document.querySelectorAll('.event').forEach(e=>e.classList.remove('active'));
+ document.getElementById(name).classList.add('active');
+ audio.src=tracks[name].file;
+ status.textContent=tracks[name].label+(playing?' • Playing':' • Tap play to listen');
+ if(playing) audio.play().catch(()=>{});
+}
+async function toggleMusic(){
+ if(!audio.src) audio.src=tracks[current].file;
+ if(audio.paused){await audio.play();playing=true;btn.textContent='⏸ Pause Music';status.textContent=tracks[current].label+' • Playing';}
+ else{audio.pause();playing=false;btn.textContent='▶ Play Music';status.textContent=tracks[current].label+' • Paused';}
+}
+function shareInvite(){
+ if(navigator.share) navigator.share({title:'Faizan & Areeba Wedding Invitation',text:'You are invited to Faizan & Areeba’s wedding celebrations!',url:location.href});
+ else navigator.clipboard?.writeText(location.href).then(()=>alert('Invitation link copied!'));
+}
 </script>
 </body>
 </html>
